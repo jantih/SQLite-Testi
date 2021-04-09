@@ -78,9 +78,13 @@ namespace SQLite_console
             }
             void LajitteleHinta()
             {
-                SQLiteCommand lajitteleHinta = new("SELECT * FROM tuotteet ORDER BY 'Hinta' ASC", yhteys); // Ei toimi'single quoteilla' eikä ilman..
-                lajitteleHinta.ExecuteReader(); // Sama tässä, ei toimi ExecuteNonQuery eikä ExecuteReader
-
+                SQLiteCommand lajitteleHinta = new("SELECT * FROM tuotteet ORDER BY Hinta ASC", yhteys); // Ei toimi'single quoteilla' eikä ilman..
+                SQLiteDataReader reader = lajitteleHinta.ExecuteReader(); // Sama tässä, ei toimi ExecuteNonQuery eikä ExecuteReader
+                Console.WriteLine($"\n{reader.GetName(0),-3}{reader.GetName(1),-8}{reader.GetName(2),12}{reader.GetName(3),8}");
+                while (reader.Read())
+                {
+                    Console.WriteLine($"{reader.GetInt32(0),-3}{reader.GetString(1),-8}{reader.GetString(2),12}{reader.GetInt32(3),8}");
+                }
             }
             void LuoTieto()
             {

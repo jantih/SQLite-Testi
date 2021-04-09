@@ -7,6 +7,8 @@
             SQL SQL_Osoite = new();
             string haettuOsoite = HaeOsoite(SQL_Osoite);
             YhdistäSQL(SQL_Osoite, haettuOsoite);
+            SQL_Osoite.Keke = "Kakka";
+            System.Console.WriteLine(SQL_Osoite.Keke);
         }
         static string HaeOsoite(SQL SQL_Osoite)
         {
